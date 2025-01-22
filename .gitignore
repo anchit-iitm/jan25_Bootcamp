@@ -1,1 +1,4 @@
 .venv_day0/
+.venv_day1/
+instance/
+__pycache__/

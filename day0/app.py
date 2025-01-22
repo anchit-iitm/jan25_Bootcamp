@@ -17,8 +17,8 @@ def index():
 @app.route('/ht/1', methods=['GET', 'POST'])
 def index1():
     if request.method == 'POST':
-        name = request.form['name']
-        return f'template print, {name}!'
+        var1 = request.form['name']
+        return f'template print, {var1}!'
     else:
         return render_template('index1.html')
 
