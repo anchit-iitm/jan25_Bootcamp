@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -10,7 +10,7 @@ def hello_world():
 def hello_name(name):
     return f'Hello, {name}!'
 
-@app.route('/ht')
+@app.route('/htp')
 def index():
     return render_template('index.html')
 
@@ -21,6 +21,10 @@ def index1():
         return f'template print, {var1}!'
     else:
         return render_template('index1.html')
+    
+@app.route('/ht/2', methods=['GET'])
+def test_day3():
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
