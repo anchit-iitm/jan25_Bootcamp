@@ -7,7 +7,7 @@
                     <th>name</th>
                     <th>age</th>
                 </tr>
-                </thead>
+            </thead>
             <tbody>
                 <tr v-for="json in this.data">
                     <td><router-link :to="{name: 'redirect', params: {name1: json.name}}">{{ json.name }}</router-link></td>
