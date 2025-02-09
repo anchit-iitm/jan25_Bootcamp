@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import firstPage from '../views/firstpage.vue'
 import manRedirect from '../views/redirect.vue'
+import Category_create from '@/views/category_create.vue'
 
 const routes = [
   {
@@ -31,6 +32,21 @@ const routes = [
     path: '/redirect/:name1',
     name: 'redirect',
     component: manRedirect
+  },
+  {
+    path: '/category/create',
+    name: 'category_create',
+    component: Category_create
+  },
+  {
+    path: '/category/update/:id',
+    name: 'category_update',
+    component: Category_create
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('@/views/dashboard.vue')
   }
 ]
 

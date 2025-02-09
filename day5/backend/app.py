@@ -13,13 +13,15 @@ app.config.from_object(localdev)
 # app.config.from_object(config)
 
 db.init_app(app)
-Security(app, user_datastore)\
+Security(app, user_datastore)
 
 CORS(app)
 
-api = Api(app)
-from routes import first_restful
+api = Api(app, prefix='/api')
+from routes import first_restful, crud_category, crud_products
 api.add_resource(first_restful, '/test1')
+api.add_resource(crud_products, '/products')
+api.add_resource(crud_category, '/categories')
 
 @app.route('/helloworld')
 def hello_world():

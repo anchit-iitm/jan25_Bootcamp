@@ -4,6 +4,8 @@
     <router-link :to="{'name': 'about'}">About</router-link> |
     <router-link :to="{'name': 'firstPagePathName'}">First Page</router-link> |
     <router-link :to="{'name': 'login'}">Login</router-link> |
+    <router-link :to="{'name': 'category_create'}">Create a category</router-link> |
+    <router-link :to="{'name': 'dashboard'}">Dashboard</router-link> |
     <a @click="this.logout()">Logout</a>
   </nav>
   <router-view/>

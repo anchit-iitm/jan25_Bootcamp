@@ -60,11 +60,11 @@ class crud_category(Resource):
         return make_response(jsonify({"msg": 'No data!'}), 404)
     
     @auth_required('token')    
-    @roles_accepted('admin, manager, customer')
+    @roles_accepted('admin', 'manager', 'customer')
     def get(self):
         data = category.query.all()
         if data:
-            return make_response(jsonify({"data": [i.name for i in data]}), 200)
+            return make_response(jsonify({"data": [{"name": i.name, "description": i.description, "id": i.id} for i in data]}), 200)
         return make_response(jsonify({"msg": 'No data!'}), 404)
     
     @auth_required('token')
@@ -88,7 +88,7 @@ class crud_category(Resource):
     
 class crud_products(Resource):
     @auth_required('token')
-    @roles_accepted('admin, manager')
+    @roles_accepted('admin', 'manager')
     def post(self):
         if request.get_json():
             data = request.get_json()
@@ -99,7 +99,7 @@ class crud_products(Resource):
         return make_response(jsonify({"msg": 'No data!'}), 404)
     
     @auth_required('token')
-    @roles_accepted('admin, manager, customer')    
+    @roles_accepted('admin', 'manager', 'customer')    
     def get(self):
         data = product.query.all()
         if data:
@@ -107,7 +107,7 @@ class crud_products(Resource):
         return make_response(jsonify({"msg": 'No data!'}), 404)
     
     @auth_required('token')
-    @roles_accepted('admin, manager')    
+    @roles_accepted('admin', 'manager')    
     def put(self):
         data = request.get_json()
         update_data = product.query.filter_by(id=data['id']).first()
@@ -119,7 +119,7 @@ class crud_products(Resource):
         return make_response(jsonify({"msg": 'Data updated', "name": f'{update_data.name}', "description": f'{update_data.description}', "price": f'{update_data.price}', "category_id": f'{update_data.category_id}'}), 200)
     
     @auth_required('token')
-    @roles_accepted('admin, manager')    
+    @roles_accepted('admin', 'manager')    
     def delete(self):
         data = request.get_json()
         delete_data = product.query.filter_by(id=data['id']).first()

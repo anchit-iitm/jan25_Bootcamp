@@ -41,6 +41,7 @@ class category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     description = db.Column(db.String(100))
+    # deleted = db.Column(db.Boolean, default=False)
 
 class product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
